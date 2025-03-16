@@ -1,0 +1,40 @@
+# Build outputs
+/bin/
+/obj/
+/publish/
+/Debug/
+/Release/
+
+# Package folders
+/packages/
+/node_modules/
+
+# IDE folders and files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sw?
+
+# Test Results
+TestResults/
+
+# Temporary files
+*~
+*.tmp
+*.bak
+*.log
+
+# System files
+Thumbs.db
+desktop.ini
+
+# User specific files
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+project.lock.json
+
+# Other
+.DS_Store

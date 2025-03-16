@@ -1,0 +1,15 @@
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/bin/Debug/net9.0/Restaurants.Application.deps.json
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/bin/Debug/net9.0/Restaurants.Application.dll
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/bin/Debug/net9.0/Restaurants.Application.pdb
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/bin/Debug/net9.0/Restaurants.Domain.dll
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/bin/Debug/net9.0/Restaurants.Domain.pdb
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.csproj.AssemblyReference.cache
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.AssemblyInfoInputs.cache
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.AssemblyInfo.cs
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.csproj.CoreCompileInputs.cache
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaura.6AB96A7C.Up2Date
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.dll
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/refint/Restaurants.Application.dll
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/Restaurants.Application.pdb
+/Users/maynordeleon/Documents/DotNet/Restaurants/Restaurants.Application/obj/Debug/net9.0/ref/Restaurants.Application.dll

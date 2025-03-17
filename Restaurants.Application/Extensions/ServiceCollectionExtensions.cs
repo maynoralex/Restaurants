@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
 {
     public static void AddApplication(this IServiceCollection services){
         var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
-        services.AddScoped<IRestaurantService, RestaurantsService>();
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(applicationAssembly));
         //add this asssembly for reflection.
         services.AddAutoMapper(applicationAssembly);
         services.AddValidatorsFromAssembly(applicationAssembly)

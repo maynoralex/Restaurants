@@ -7,7 +7,7 @@ Accept: application/json
 
 ###
 
-GET {{Restaurants_API_HostAddress}}/api/restaurants/3
+GET {{Restaurants_API_HostAddress}}/api/restaurants/99
 Accept: application/json
 
 ###
@@ -16,13 +16,13 @@ POST {{Restaurants_API_HostAddress}}/api/restaurants/
 Content-Type: application/json
 
 {
-    "Name": "Tasty bites",
-    "Description": "A cozy restaurant serving a variety of dishes.",
-    "Category": "International Cuisine",
+    "Name": "Al Macarone",
+    "Description": "A cheap restaurant serving a italian food.",
+    "Category": "Italian Street Food",
     "HasDelivery": true,
-    "ContactEmail": "info@tastybites.com",
-    "ContactNumber": "33323555",
-    "City": "Metropolis City",
-    "Street": "669 Cuisine Avenue",
-    "PostalCode": "93-993"
+    "ContactEmail": "info@macarone.com",
+    "ContactNumber": "98377488",
+    "City": "Guatemala City",
+    "Street": "98 Petapa Avenue",
+    "PostalCode": "10-443"
 }

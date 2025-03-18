@@ -26,3 +26,20 @@ Content-Type: application/json
     "Street": "98 Petapa Avenue",
     "PostalCode": "10-443"
 }
+
+###
+
+DELETE {{Restaurants_API_HostAddress}}/api/restaurants/5
+Accept: application/json
+
+###
+
+PATCH {{Restaurants_API_HostAddress}}/api/restaurants/6
+Content-Type: application/json
+
+{
+    "Name": "Al Bacarone",
+    "Description": "A cheap restaurant serving a italian food.",
+    "Category": "Italian Street Food",
+    "HasDelivery": true
+}

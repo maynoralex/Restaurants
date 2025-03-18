@@ -3,8 +3,7 @@ using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Compact;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +15,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog((context, configuration) => {
     configuration.ReadFrom.Configuration(context.Configuration);
 });
@@ -27,6 +27,11 @@ await seeder.Seed();
 
 
 app.UseSerilogRequestLogging();
+
+if(app.Environment.IsDevelopment()) {
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();

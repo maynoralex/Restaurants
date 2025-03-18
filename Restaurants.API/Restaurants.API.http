@@ -7,7 +7,7 @@ Accept: application/json
 
 ###
 
-GET {{Restaurants_API_HostAddress}}/api/restaurants/99
+GET {{Restaurants_API_HostAddress}}/api/restaurants/1
 Accept: application/json
 
 ###
@@ -16,15 +16,15 @@ POST {{Restaurants_API_HostAddress}}/api/restaurants/
 Content-Type: application/json
 
 {
-    "Name": "Al Macarone",
-    "Description": "A cheap restaurant serving a italian food.",
-    "Category": "Italian Street Food",
+    "Name": "Pollo Campero",
+    "Description": "A  restaurant serving a fried chicken.",
+    "Category": "Guatemalan Street Food",
     "HasDelivery": true,
-    "ContactEmail": "info@macarone.com",
-    "ContactNumber": "98377488",
+    "ContactEmail": "info@campero.com",
+    "ContactNumber": "12345678",
     "City": "Guatemala City",
-    "Street": "98 Petapa Avenue",
-    "PostalCode": "10-443"
+    "Street": "100 Petapa Avenue",
+    "PostalCode": "11-112"
 }
 
 ###
@@ -38,8 +38,8 @@ PATCH {{Restaurants_API_HostAddress}}/api/restaurants/6
 Content-Type: application/json
 
 {
-    "Name": "Al Bacarone",
+    "Name": "Al Macarone",
     "Description": "A cheap restaurant serving a italian food.",
     "Category": "Italian Street Food",
-    "HasDelivery": true
+    "HasDelivery": false
 }

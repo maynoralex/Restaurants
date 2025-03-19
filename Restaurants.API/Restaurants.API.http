@@ -7,7 +7,7 @@ Accept: application/json
 
 ###
 
-GET {{Restaurants_API_HostAddress}}/api/restaurants/4
+GET {{Restaurants_API_HostAddress}}/api/restaurants/3
 Accept: application/json
 
 ###
@@ -43,3 +43,32 @@ Content-Type: application/json
     "Category": "Italian Street Food",
     "HasDelivery": false
 }
+
+###
+
+POST {{Restaurants_API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+    "Name": "Spaguetti Bolognese",
+    "Description": "Pasta with meat sauce.",
+    "Category": "Guatemalan Street Food",
+    "Price": 11,
+    "kiloCalories": 100
+}
+
+###
+
+GET {{Restaurants_API_HostAddress}}/api/restaurants/3/dishes
+Accept: application/json
+
+###
+
+GET {{Restaurants_API_HostAddress}}/api/restaurants/3/dishes/5
+Accept: application/json
+
+###
+
+DELETE {{Restaurants_API_HostAddress}}/api/restaurants/3/dishes
+Accept: application/json
+

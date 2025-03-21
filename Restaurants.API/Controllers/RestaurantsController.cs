@@ -9,6 +9,7 @@ using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
+using Restaurants.Infrastructure.Authorization;
 
 namespace Restaurants.API.Controllers;
 
@@ -25,6 +26,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize (Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<RestaurantDto>> GetById([FromRoute] int id){
         var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
         return Ok(restaurant);
@@ -33,7 +35,6 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpDelete("{id}")]    
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    
     public async Task<IActionResult> DeleteRestaurant([FromRoute] int id){
         await mediator.Send(new DeleteRestaurantCommand(id));
         return NoContent();
@@ -51,7 +52,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [Authorize(Roles = "Owner")]
     public async Task<IActionResult> CreateRestaurant([FromBody] CreateRestaurantCommand newRestaurant){
+
         int id = await mediator.Send(newRestaurant);
         return CreatedAtAction(nameof(GetById), new { id }, null);
     }

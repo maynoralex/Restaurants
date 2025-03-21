@@ -1,4 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Identity;
+using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Persistence;
 
@@ -14,8 +16,28 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                 dbContext.AddRange(restaurants);
                 await dbContext.SaveChangesAsync();
             }
+            if(!dbContext.Roles.Any()){
+                var roles = GetRoles();
+                dbContext.AddRange(roles);
+                await dbContext.SaveChangesAsync();
+            }
             
         }
+    }
+
+    private IEnumerable<IdentityRole> GetRoles(){
+        List<IdentityRole> roles = [
+            new (UserRoles.User){
+                NormalizedName = UserRoles.User.ToUpper()
+            },
+            new(UserRoles.Owner){
+                NormalizedName = UserRoles.Owner.ToUpper()
+            },
+            new(UserRoles.Admin){
+                NormalizedName = UserRoles.Admin.ToUpper()
+            }
+        ];
+        return roles;
     }
 
     private IEnumerable<Restaurant> GetRestaurants()

@@ -1,6 +1,6 @@
 @host = http://localhost
 @port = 5207
-@token = CfDJ8GacPdrsuRxApzCsoX4o3vNQL-OHgEAem9hWQJ9hCzmI8EcAQc1lUjIoC_NPwIonZidvXrBgAtNnJOyFW1ru2k3loIut7rz3ObcB4bAVkXhu7zYjyIGGjcL4hFXhEj5dpjHZGPLk1DJAJHsfh0BjXeaCpG5mI63Evj0C7RiIFw1wVOZyBa6qdbnb7BUup7UlDJa39PqX93kVO00vOWNyawN9_3krw4fB9rtiRK5Y_81Ia0CtpgpP0RISn_Nbi4qbzUxAlc--aenuudE2JFStR55X89_y0LMF4hYxzO0_qe_mQJZlLEk5cxLBUoTZ4XYXLuW4HkrkRZayQ5kJNakzWalX1-8gO3YRYNXfDbbQwGzYQ2RkO5eSAZgGhkj4303rktXyH7EDLyjXc1XKFR-2PGOFeM2ajNd54rt1p1eX7EkbPTl90lMWs4ZcVXJqR3NTDded-qGO6aJx_MrpefcWF8UeSbd0v-vc17_rruzq6gaAgH8hBZzTzsQdJghyYVczlqM_HaJu13_FxzAH0lRAkRn6J-hpeCbToXrqzQvBuLF9sqXquU7v485b5nLN5vaA9anQuP-7oZLpFN_RMJ-GUn9Fq5QsRRrk_4uPTF1R2VGZRpFsJkiP1-q4uPCn0Jvu-Sy2Gyv1MambJkreAdY3yc7eCZylsturZmNxxbiHQTJhOiRccHogOp_Wx-7NzwYrPQ
+@token = CfDJ8GacPdrsuRxApzCsoX4o3vPmpldHbKiUGNZT3pOkrR173G0JzbMXgAS6Sa2zo0cpvKIbkDNvYkx6ESIT-WL8zMxMrvwuKeP1MAXCg1gVEbNI9yJXMykD_qxKGcL8c31GoxNlQ15D3kTshse-v46zqspzpRj6C7LdDirdlCmfFDDPQ1VJUvumMYsafL5teaUm7gapvG7hYhPBLPNI85XCM0qCFVohu5IZQL6VDCIxg60jN4yNHDax_6wRyUSnIn7mDblT-mbdYKzK8ge_7LuupLxMvRq0isK71j0Ok2ad657KkV4Wr6uGmzL_DWQL3vDiXG-JPoTG178Gm8BYWTx0UhYwaoCi7FWn-4xVbBI-D6NqFr59XRnr62dQTmAZ6iBWRdRJYkGxirl1jCa_keXluQhNpPjVP8W0uIViqlayLBTnPAi5qN9zmgVtsirxyms8YPbJlKn58-uAfoToSbtNJcG8N2Q4MQFUCOerMwTb6d91gf_w2vbbBRsYYfFJ95Y5wayUkVeX2jA2BU0Wt5uCZIYwrPVTuiaI1cakFTS_ZaF-ab4ag0eR4n3HtNbBeTSuzeoClb8DTXRcAvtI6sgMMbMbOVryBKClWm7d5eiKF-0uZf5KCiENLbMqlTSuUckATHROXzsVVM--pkyeDdVwJV2L0PC3pbFp-I4ULaWvWGBgNdRoJUUuJx0xJC-caw3OX3Np2yEDpmk-1e1sQoacolciNsu7rB-olHwiUcHTsGyo7OsH6TSFChpt2B5HNTDvVNwqTvgII5J6Rsbi61zBCxqGpU5BkrObwaJYuAtdD3L8
 @Restaurants_API_HostAddress = {{host}}:{{port}}
 
 GET {{Restaurants_API_HostAddress}}/api/restaurants
@@ -10,33 +10,37 @@ Accept: application/json
 ###
 
 GET {{Restaurants_API_HostAddress}}/api/restaurants/3
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
 POST {{Restaurants_API_HostAddress}}/api/restaurants/
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "Name": "Pollo Campero",
-    "Description": "A  restaurant serving a fried chicken.",
-    "Category": "Guatemalan Street Food",
+    "Name": "Burger King",
+    "Description": "A  restaurant serving hamburgers.",
+    "Category": "Greasy Street Food",
     "HasDelivery": true,
-    "ContactEmail": "info@campero.com",
-    "ContactNumber": "12345678",
-    "City": "Guatemala City",
-    "Street": "100 Petapa Avenue",
-    "PostalCode": "11-112"
+    "ContactEmail": "info@bk.com",
+    "ContactNumber": "998333",
+    "City": "Malmo City",
+    "Street": "100 Friisgatan",
+    "PostalCode": "11-222"
 }
 
 ###
 
 DELETE {{Restaurants_API_HostAddress}}/api/restaurants/5
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
 PATCH {{Restaurants_API_HostAddress}}/api/restaurants/6
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -90,6 +94,6 @@ POST {{Restaurants_API_HostAddress}}/api/identity/login
 Content-Type:  application/json
 
 {
-    "email": "test@test.com",
+    "email": "owner@test.com",
     "password": "Password1!"
 }

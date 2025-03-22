@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Common;
 using Restaurants.Application.Restaurants;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
@@ -20,8 +21,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 {
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll(){
-        var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
+    public async Task<ActionResult<PagedResult<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery query){
+        var restaurants = await mediator.Send(query);
         return Ok(restaurants);
     }
 

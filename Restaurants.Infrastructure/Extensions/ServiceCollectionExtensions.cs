@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Restaurants.Infrastructure.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
+using Restaurants.Infrastructure.Authorization.Services;
+using Restaurants.Application.Interfaces;
 
 namespace Restaurants.Infrastructure.Extensions;
 
@@ -32,6 +34,7 @@ public static class ServiceCollectionExtensions
             .AddPolicy(PolicyNames.AtLeast20, builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+        services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
 
     }
 

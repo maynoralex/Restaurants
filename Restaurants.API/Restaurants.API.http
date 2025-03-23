@@ -1,40 +1,46 @@
 @host = http://localhost
 @port = 5207
+@token = CfDJ8GacPdrsuRxApzCsoX4o3vMMVp31TzYqGSg8fL8jAfxO4YPno_Re_TJAUdDxpOBxN5LbnITqMSqSTy06r2opgFVuZU_fWaMZuxRSYurvSKMyQzcbHDr_-QSjHU3ARLa1mRZYr351cz0BpfmHpoqqzWQz8GaqCALI-D_psED3QSO0xCZzBUm1GUL61sX56yYsaPvzc856RIbm43w9vvxajkWV2WbOPuYenl3Q2WF1WRRhQf17PIdWXIaolUxS6T0v78MrmURTv3O6tvE0nPRB8jYEGW2-5kt4uH8qj8ucyCR2ocVlYfSzI08lTIZVvzmOXOVP5kQVMgmSGe9xh0OJvObR3QW-7SyRuw5zut6xr9YWvLAfSSQ7md_ghUX3JS4PNHvKQmAzlsxIdoDwuJzx0gKAJCqJK8Zv8x_-lxEy9Rh-cW57V-70OiiPD4rUqgiAlBINBRyqNSXLWuF-ZV_5cMk9zv7b1IK57JGFqVQPVYI0SXpGaw78IE4bkPUBpmKKJm5kdyOZPM4JRkClewIcTm6q4Iya3YxyATrXQVxu-90-3a0yCpMywnQl3zmjjLwLH3fozCV7S72ebKK8SOIndOTeV80oFMbISj9jG5lRjR_x9vI2PMdPsSxsVSwZd1WtoTiYbJP63_Z-Svw-mpZhT78P1bYCkndq2JVJmsTvwNOofKqOXuSQo_3jlp1c4oTvdO31fG5DpRFGGmFeqeFbovoYLqkS1o67YmRygBpTVX1xO_WZJZI8YPp33ffPk4yNL32k9o03cutFM1KVyln06H-qYGnRm85KsoJNxKUDXOQ0
 @Restaurants_API_HostAddress = {{host}}:{{port}}
 
-GET {{Restaurants_API_HostAddress}}/api/restaurants
+GET {{Restaurants_API_HostAddress}}/api/restaurants?SearchPhrase=&pageNumber=1&pageSize=5&SortBy=Name&SortDirection=Descending
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
 GET {{Restaurants_API_HostAddress}}/api/restaurants/3
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
 POST {{Restaurants_API_HostAddress}}/api/restaurants/
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "Name": "Pollo Campero",
-    "Description": "A  restaurant serving a fried chicken.",
-    "Category": "Guatemalan Street Food",
+    "Name": "Burger King",
+    "Description": "A  restaurant serving hamburgers.",
+    "Category": "Greasy Street Food",
     "HasDelivery": true,
-    "ContactEmail": "info@campero.com",
-    "ContactNumber": "12345678",
-    "City": "Guatemala City",
-    "Street": "100 Petapa Avenue",
-    "PostalCode": "11-112"
+    "ContactEmail": "info@bk.com",
+    "ContactNumber": "998333",
+    "City": "Malmo City",
+    "Street": "100 Friisgatan",
+    "PostalCode": "11-222"
 }
 
 ###
 
 DELETE {{Restaurants_API_HostAddress}}/api/restaurants/5
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
 PATCH {{Restaurants_API_HostAddress}}/api/restaurants/6
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -72,3 +78,22 @@ Accept: application/json
 DELETE {{Restaurants_API_HostAddress}}/api/restaurants/3/dishes
 Accept: application/json
 
+###
+
+POST {{Restaurants_API_HostAddress}}/api/identity/register
+Content-Type:  application/json
+
+{
+    "email": "test@test.com",
+    "password": "Password1!"
+}
+
+### 
+
+POST {{Restaurants_API_HostAddress}}/api/identity/login
+Content-Type:  application/json
+
+{
+    "email": "owner@test.com",
+    "password": "Password1!"
+}

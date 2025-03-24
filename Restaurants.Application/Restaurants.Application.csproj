@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Restaurants/Validators/" />
+    <Folder Include="Users/Restaurants/" />
   </ItemGroup>
 
 </Project>

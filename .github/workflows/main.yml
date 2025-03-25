@@ -2,10 +2,10 @@ name: restaurant-api
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 
@@ -26,4 +26,4 @@ jobs:
       - name: Build Tests
         run: dotnet build RestaurantsTests.sln --no-restore
       - name: Test
-        run: dotnet test
+        run: dotnet test RestaurantsTests.sln

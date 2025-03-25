@@ -6,44 +6,54 @@ using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
 
+try
+{
+    
+    var builder = WebApplication.CreateBuilder(args);
 
-var builder = WebApplication.CreateBuilder(args);
 
+    // Add services to the container.
 
-// Add services to the container.
+    builder.Services.AddApplication();
+    builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+    builder.AddPrestentation();
 
-builder.AddPrestentation();
+    var app = builder.Build();
 
-var app = builder.Build();
+    var scope = app.Services.CreateScope();
+    var seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
+    await seeder.Seed();
 
-var scope = app.Services.CreateScope();
-var seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
-await seeder.Seed();
+    app.UseMiddleware<ErrorHandlingMiddleware>();
+    app.UseMiddleware<RequestTimeLogMiddleware>();
 
-app.UseMiddleware<ErrorHandlingMiddleware>();
-app.UseMiddleware<RequestTimeLogMiddleware>();
+    app.UseSerilogRequestLogging();
 
-app.UseSerilogRequestLogging();
+    if(app.Environment.IsDevelopment()) {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-if(app.Environment.IsDevelopment()) {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // Configure the HTTP request pipeline.
+    app.UseHttpsRedirection();
+
+    app.MapGroup("api/identity")
+        .WithTags("Identity")
+        .MapIdentityApi<User>();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
+
 }
-
-// Configure the HTTP request pipeline.
-app.UseHttpsRedirection();
-
-app.MapGroup("api/identity")
-    .WithTags("Identity")
-    .MapIdentityApi<User>();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch(Exception ex){
+    Log.Fatal(ex, "Application startup Failed.");
+}
+finally{
+    Log.CloseAndFlush();
+}
 
 public partial class Program {}

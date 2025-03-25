@@ -1,5 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Persistence;
@@ -9,6 +10,10 @@ namespace Restaurants.Infrastructure.Seeders;
 public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeeder
 {
     public async Task Seed() {
+        if(dbContext.Database.GetPendingMigrations().Any()){
+            await dbContext.Database.MigrateAsync();
+        }
+
         if(await dbContext.Database.CanConnectAsync()){
             if (!dbContext.Restaurants.Any())
             {
@@ -42,8 +47,13 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
 
     private IEnumerable<Restaurant> GetRestaurants()
     {
+        User owner = new()
+        {
+            Email = "seed-user@test.com"
+        };
         List<Restaurant> restaurants = [new()
             {
+                Owner = owner,
                 Name = "KFC",
                 Category = "Fast Food",
                 Description = "KFC (short for Kentucky Fried Chicken) is an American fast food restaurant chain headquartered in Louisville, Kentucky, that specializes in fried chicken.",
@@ -75,6 +85,7 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
             },
             new ()
             {
+                Owner = owner,
                 Name = "McDonald",
                 Category = "Fast Food",
                 Description = "McDonald's Corporation (McDonald's), incorporated on December 21, 1964, operates and franchises McDonald's restaurants.",

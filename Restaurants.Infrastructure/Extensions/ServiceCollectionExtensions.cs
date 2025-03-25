@@ -19,7 +19,8 @@ public static class ServiceCollectionExtensions
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration){
         var connectionString = configuration.GetConnectionString("RestaurantsDb");
-        services.AddDbContext<RestaurantsDbContext>(options => options.UseNpgsql(connectionString).EnableSensitiveDataLogging());
+        //services.AddDbContext<RestaurantsDbContext>(options => options.UseNpgsql(connectionString).EnableSensitiveDataLogging());
+        services.AddDbContext<RestaurantsDbContext>(options => options.UseAzureSql(connectionString).EnableSensitiveDataLogging());
         
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()

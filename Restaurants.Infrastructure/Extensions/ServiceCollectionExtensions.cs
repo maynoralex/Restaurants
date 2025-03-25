@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
 using Restaurants.Infrastructure.Authorization.Services;
 using Restaurants.Application.Interfaces;
+using Restaurants.Infrastructure.Configuration;
+using Restaurants.Domain.Interfaces;
+using Restaurants.Infrastructure.Storage;
 
 namespace Restaurants.Infrastructure.Extensions;
 
@@ -36,7 +39,8 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
         services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
-
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 
 }

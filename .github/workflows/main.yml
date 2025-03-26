@@ -23,6 +23,8 @@ jobs:
         run: dotnet restore Restaurants.sln
       - name: Build
         run: dotnet build Restaurants.sln --no-restore
+      - name: Restore Test dependencies
+        run: dotnet restore RestaurantsTest.sln
       - name: Build Tests
         run: dotnet build RestaurantsTests.sln --no-restore
       - name: Test

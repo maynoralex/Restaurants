@@ -19,7 +19,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore Restaurants.sln
       - name: Build
-        run: dotnet build Restaurants.sln --no-restore
+        run: dotnet build Restaurants.sln --no-restore -c Release
       - name: Publish
         run: dotnet publish ./Restaurants.API/Restaurants.API.csproj -o ${{env.DOTNET_ROOT}}/api --no-build
       - name: Upload a Build Artifact

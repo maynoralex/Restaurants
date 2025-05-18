@@ -53,3 +53,11 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 *.DS_Store
+
+# Angular specific ignores (inside Restaurants.UI)
+Restaurants.UI/node_modules/
+Restaurants.UI/dist/
+Restaurants.UI/.angular/
+Restaurants.UI/coverage/
+Restaurants.UI/npm-debug.log*
+Restaurants.UI/yarn-error.log*

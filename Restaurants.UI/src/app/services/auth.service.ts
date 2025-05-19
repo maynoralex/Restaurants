@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { LoginResponse } from '../models/login-response';
 import { LoginRequest } from '../models/login-request';
@@ -9,7 +9,7 @@ import { LoginRequest } from '../models/login-request';
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient) { }
+  private readonly httpClient: HttpClient = inject(HttpClient);
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.httpClient.post<LoginResponse>('http://localhost:5207/login', credentials)

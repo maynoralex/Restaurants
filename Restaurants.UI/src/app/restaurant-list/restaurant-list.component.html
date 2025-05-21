@@ -1,0 +1,39 @@
+<h3 class="mt-5 mb-2">Restaurant List</h3>
+
+
+@if (restaurants.length > 0) {
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Has Delivery</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Postal Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (restaurant of restaurants; track restaurant.id) {
+    <tr>
+            <td>{{restaurant.id}}</td>
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.description}}</td>
+            <td>{{restaurant.category}}</td>
+            <td>{{restaurant.hasDelivery}}</td>
+            <td>{{restaurant.city}}</td>
+            <td>{{restaurant.street}}</td>
+            <td>{{restaurant.postalCode}}</td>
+            <!--td>
+                <button class="btn btn-sm btn-danger mx-1" (click)="deleteReservation(reservation.id)">Delete</button>
+                <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit',reservation.id]">Edit</button>
+            </td-->
+    </tr>
+    }
+    </tbody>
+</table>
+}@else {
+        <p>There are no restaurants to list.</p>
+}

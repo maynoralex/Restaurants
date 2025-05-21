@@ -12,7 +12,7 @@ export class AuthService {
   private readonly httpClient: HttpClient = inject(HttpClient);
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>('http://localhost:5207/login', credentials)
+    return this.httpClient.post<LoginResponse>('http://localhost:5207/api/identity/login', credentials)
       .pipe(map(response => {
         localStorage.setItem('accessToken', response.accessToken);
         document.cookie = `refreshToken=${response.refreshToken};`;

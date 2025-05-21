@@ -18,6 +18,16 @@ try
     builder.Services.AddInfrastructure(builder.Configuration);
 
     builder.AddPrestentation();
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll",
+            builder =>
+            {
+                builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:4200");
+            });
+    });
 
     var app = builder.Build();
 
@@ -41,6 +51,8 @@ try
     app.MapGroup("api/identity")
         .WithTags("Identity")
         .MapIdentityApi<User>();
+
+    app.UseCors("AllowAll");
 
     app.UseAuthorization();
 
